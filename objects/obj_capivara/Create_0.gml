@@ -20,6 +20,9 @@ grav            = 0.3;
 Right           = false;
 Left            = false;
 
+cam_y = y;
+cam_y_alvo = 0;
+
 #endregion
 
 
@@ -60,7 +63,7 @@ Movimento_Horizontal = function(){
             while (!place_meeting(x, y + sign(velv), obj_plat_tronco)) {
                 y += sign(velv);
             }
-            
+                    
             // Pula instantaneamente
             velv = velvMAX;
             
@@ -75,6 +78,17 @@ Movimento_Horizontal = function(){
     
     // Aplica o movimento final no eixo Y
     y += velv;
+    
+    
+    
+    if(cam_y > y) cam_y = y;
+    
+    camera_set_view_pos(view_camera[0], 0, cam_y - 160);
+
+    
+    if (y > camera_get_view_y(view_camera[0]) + 320) {
+        room_restart();
+    }
 }
 
 #endregion
