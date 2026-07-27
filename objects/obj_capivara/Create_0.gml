@@ -64,6 +64,9 @@ Movimento_Horizontal = function(){
                 y += sign(velv);
             }
                     
+            //Crio a particula de pulo
+            instance_create_layer(x,y,layer,obj_part);
+            
             // Pula instantaneamente
             velv = velvMAX;
             
