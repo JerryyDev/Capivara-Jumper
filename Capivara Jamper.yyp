@@ -19,6 +19,7 @@
     {"$GMFolder":"","%Name":"Sounds","folderPath":"folders/Sounds.yy","name":"Sounds","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Background","folderPath":"folders/Sprites/Background.yy","name":"Background","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Menu","folderPath":"folders/Sprites/Background/Menu.yy","name":"Menu","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Capivara","folderPath":"folders/Sprites/Capivara.yy","name":"Capivara","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Itens","folderPath":"folders/Sprites/Itens.yy","name":"Itens","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Plataformas","folderPath":"folders/Sprites/Plataformas.yy","name":"Plataformas","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -38,8 +39,11 @@
     {"id":{"name":"obj_plat_movel","path":"objects/obj_plat_movel/obj_plat_movel.yy",},},
     {"id":{"name":"obj_plat_tronco","path":"objects/obj_plat_tronco/obj_plat_tronco.yy",},},
     {"id":{"name":"rm_jogo","path":"rooms/rm_jogo/rm_jogo.yy",},},
+    {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"spr_acai","path":"sprites/spr_acai/spr_acai.yy",},},
-    {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
+    {"id":{"name":"spr_background_game","path":"sprites/spr_background_game/spr_background_game.yy",},},
+    {"id":{"name":"spr_background_menu1","path":"sprites/spr_background_menu1/spr_background_menu1.yy",},},
+    {"id":{"name":"spr_background_menu2","path":"sprites/spr_background_menu2/spr_background_menu2.yy",},},
     {"id":{"name":"spr_capivara","path":"sprites/spr_capivara/spr_capivara.yy",},},
     {"id":{"name":"spr_plat_movel","path":"sprites/spr_plat_movel/spr_plat_movel.yy",},},
     {"id":{"name":"spr_plat_tronco","path":"sprites/spr_plat_tronco/spr_plat_tronco.yy",},},
@@ -49,6 +53,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_jogo","path":"rooms/rm_jogo/rm_jogo.yy",},},
+    {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
