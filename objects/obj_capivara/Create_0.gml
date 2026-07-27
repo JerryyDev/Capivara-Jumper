@@ -46,23 +46,30 @@ Movimento_Horizontal = function(){
     x += velh;
     
     
-    // --- 3. COLISÃO E PULO NA PLATAFORMA ---
-    // Verifica se haverá colisão com a plataforma no próximo movimento vertical (y + velv)
-    var colide_plat = place_meeting(x, y + velv, obj_plat_tronco);
-    
-    // Só entra no pulo se a capivara estiver CAINDO (velv > 0) E colidir com a plataforma
-    if (velv > 0 && colide_plat) {
+// --- 3. COLISÃO E PULO NA PLATAFORMA ---
+    // 1. Só verifica colisão se estiver CAINDO
+    if (velv > 0) {
         
-        // Loop 'while': Aproxima a capivara pixel por pixel da plataforma até encostar perfeitamente
-        while (!place_meeting(x, y + sign(velv), obj_plat_tronco)) {
-            y += sign(velv);
+        // Pega a instância exata da plataforma com a qual vai colidir
+        var _plat = instance_place(x, y + velv, obj_plat_tronco);
+        
+        // 2. Se encontrou plataforma E os pés da capivara estão ACIMA do topo dela
+        if (_plat != noone && bbox_bottom <= _plat.bbox_top + velv) {
+            
+            // Encosta a capivara perfeitamente no topo da plataforma
+            while (!place_meeting(x, y + sign(velv), obj_plat_tronco)) {
+                y += sign(velv);
+            }
+            
+            // Pula instantaneamente
+            velv = velvMAX;
+            
+        } else {
+            // Se estiver abaixo ou subindo, ignora a plataforma e aplica a gravidade
+            velv += grav;
         }
-        
-        // Reseta a velocidade de queda e aplica a força do pulo para cima (-10)
-        velv = velvMAX;
-        
     } else {
-        // Se estiver no ar (subindo ou caindo sem colisão), soma a gravidade na velocidade vertical
+        // Se estiver subindo (velv <= 0), aplica a gravidade normalmente
         velv += grav;
     }
     
