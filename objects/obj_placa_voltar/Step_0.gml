@@ -5,7 +5,9 @@ if(Mouse_in){
     image_yscale = lerp(image_yscale,1.2,0.2);
     
     if(mouse_check_button_pressed(mb_left)){
-        room_goto(rm_menu);
+        global.proxima_room = rm_menu;
+        global.in_trn = true;
+        layer_sequence_create("TRN", 0, 0, trn_in);
     }
     
 }else{

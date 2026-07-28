@@ -57,6 +57,7 @@
     {"id":{"name":"rm_score","path":"rooms/rm_score/rm_score.yy",},},
     {"id":{"name":"globais","path":"scripts/globais/globais.yy",},},
     {"id":{"name":"trn_in","path":"sequences/trn_in/trn_in.yy",},},
+    {"id":{"name":"trn_out","path":"sequences/trn_out/trn_out.yy",},},
     {"id":{"name":"snd_bip","path":"sounds/snd_bip/snd_bip.yy",},},
     {"id":{"name":"snd_game","path":"sounds/snd_game/snd_game.yy",},},
     {"id":{"name":"snd_jump","path":"sounds/snd_jump/snd_jump.yy",},},

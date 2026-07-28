@@ -100,7 +100,8 @@ Movimento_Horizontal = function(){
 
     
     if (y > camera_get_view_y(view_camera[0]) + 320) {
-        room_goto(rm_score);
+        global.proxima_room = rm_score;
+        layer_sequence_create("TRN", room_width, room_height, trn_in);
     }
 }
 

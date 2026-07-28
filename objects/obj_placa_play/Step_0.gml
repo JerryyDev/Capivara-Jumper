@@ -8,7 +8,8 @@ if(Mouse_in){
     ys_t = lerp(ys_t,1.2,0.2);
     
     if(mouse_check_button_pressed(mb_left)){
-        room_goto(rm_jogo);
+        global.proxima_room = rm_jogo;
+        layer_sequence_create("TRN", 0, 0, trn_in);
     }
     
 }else{
