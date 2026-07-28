@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_capivara",
+  "%Name":"obj_placa_text",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_capivara",
+  "name":"obj_placa_text",
   "overriddenProperties":[],
   "parent":{
-    "name":"Capivara",
-    "path":"folders/Objetos/Capivara.yy",
+    "name":"Menu",
+    "path":"folders/Objetos/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_capivara",
-    "path":"sprites/spr_capivara/spr_capivara.yy",
+    "name":"spr_placa_play",
+    "path":"sprites/spr_placa_play/spr_placa_play.yy",
   },
   "spriteMaskId":null,
   "visible":true,

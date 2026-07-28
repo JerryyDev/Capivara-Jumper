@@ -1,4 +1,3 @@
-
 Destruir();
 
 if(hspeed == 0){

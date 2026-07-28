@@ -23,6 +23,8 @@ Left            = false;
 cam_y = y;
 cam_y_alvo = 0;
 
+global.pontuacao = 0; 
+
 #endregion
 
 
@@ -85,13 +87,15 @@ Movimento_Horizontal = function(){
     y += velv;
     
     
-    if(cam_y > y) cam_y = lerp(cam_y,y,0.1);
+    if(cam_y > y){ 
+        cam_y = y;
+    }
     
     camera_set_view_pos(view_camera[0], 0, cam_y - 160);
 
     
     if (y > camera_get_view_y(view_camera[0]) + 320) {
-        room_restart();
+        room_goto(rm_score);
     }
 }
 
