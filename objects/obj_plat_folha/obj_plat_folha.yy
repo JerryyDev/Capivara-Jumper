@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_plat_movel",
+  "%Name":"obj_plat_folha",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_plat_movel",
+  "name":"obj_plat_folha",
   "overriddenProperties":[],
   "parent":{
     "name":"Plataformas",
@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_plat_movel",
-    "path":"sprites/spr_plat_movel/spr_plat_movel.yy",
+    "name":"spr_plat_folha",
+    "path":"sprites/spr_plat_folha/spr_plat_folha.yy",
   },
   "spriteMaskId":null,
   "visible":true,

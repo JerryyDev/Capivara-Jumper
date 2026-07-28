@@ -1,21 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_plat_movel",
+  "%Name":"obj_plat_pai",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_plat_movel",
+  "name":"obj_plat_pai",
   "overriddenProperties":[],
   "parent":{
     "name":"Plataformas",
     "path":"folders/Objetos/Plataformas.yy",
   },
-  "parentObjectId":{
-    "name":"obj_plat_pai",
-    "path":"objects/obj_plat_pai/obj_plat_pai.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,10 +29,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_plat_movel",
-    "path":"sprites/spr_plat_movel/spr_plat_movel.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

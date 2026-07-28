@@ -6,8 +6,8 @@ velv            = 0;
 // Velocidade horizontal atual (vai pra esquerda se negativa, direita se positiva)
 velh            = 0;
 
-// Força máxima do pulo (em GML, valores negativos sobem o personagem na tela)
-velvMAX         = -14;
+// Força máxima do pulo
+velvMAX         = -8;
 
 // Velocidade de movimento para os lados
 velhMAX         = 2.2;
@@ -48,72 +48,44 @@ Movimento_Horizontal = function(){
     // Aplica o movimento no eixo X
     x += velh;
     
-    
-    // COLISÃO E PULO NA PLATAFORMA TRONCO
-    // Só verifica colisão se estiver CAINDO
     if (velv > 0) {
-        // Pega a instância exata da plataforma com a qual vai colidir
-        var _plat_tronco = instance_place(x, y + velv, obj_plat_tronco);        
         
-        // Se encontrou plataforma E os pés da capivara estão ACIMA do topo dela
-        if (_plat_tronco != noone && bbox_bottom <= _plat_tronco.bbox_top + velv) {
+        // Pega a instância exata da plataforma abaixo (detecta qualquer filho de obj_plat_pai)
+        var _plat = instance_place(x, y + velv, obj_plat_pai);
+        
+        // Se colidiu E os pés da capivara estão ACIMA do topo da plataforma
+        if (_plat != noone && bbox_bottom <= _plat.bbox_top + velv) {
             
             // Encosta a capivara perfeitamente no topo da plataforma
-            while (!place_meeting(x, y + sign(velv), obj_plat_tronco)) {
+            while (!place_meeting(x, y + sign(velv), obj_plat_pai)) {
                 y += sign(velv);
             }
-                    
-            //Crio a particula de pulo
-            instance_create_layer(x,y,layer,obj_part);
+            
+            // Cria a partícula de pulo
+            instance_create_layer(x, y, layer, obj_part);
+            
+            // COMPORTAMENTO ESPECÍFICO: Se a plataforma for a folha, faz SÓ ELA cair
+            if (_plat.object_index == obj_plat_folha) {
+                _plat.cair = true; // Ativa o cair apenas na instância '_plat' tocada
+            }
             
             // Pula instantaneamente
             velv = velvMAX;
             
         } else {
-            // Se estiver abaixo ou subindo, ignora a plataforma e aplica a gravidade
+            // Se não encostou no topo, aplica gravidade apenas UMA vez
             velv += grav;
         }
     } else {
-        // Se estiver subindo (velv <= 0), aplica a gravidade normalmente
+        // Se estiver subindo, aplica gravidade apenas UMA vez
         velv += grav;
     }
-    
-    
-    // COLISÃO E PULO NA PLATAFORMA MOVEL
-    // Só verifica colisão se estiver CAINDO
-    if (velv > 0) {
-        // Pega a instância exata da plataforma com a qual vai colidir
-        var _plat_movel = instance_place(x, y + velv, obj_plat_movel);
-        
-        // Se encontrou plataforma E os pés da capivara estão ACIMA do topo dela
-        if (_plat_movel != noone && bbox_bottom <= _plat_movel.bbox_top + velv) {
-            
-            // Encosta a capivara perfeitamente no topo da plataforma
-            while (!place_meeting(x, y + sign(velv), obj_plat_movel)) {
-                y += sign(velv);
-            }
-                    
-            //Crio a particula de pulo
-            instance_create_layer(x,y,layer,obj_part);
-            
-            // Pula instantaneamente
-            velv = velvMAX;
-            
-        } else {
-            // Se estiver abaixo ou subindo, ignora a plataforma e aplica a gravidade
-            velv += grav;
-        }
-    } else {
-        // Se estiver subindo (velv <= 0), aplica a gravidade normalmente
-        velv += grav;
-    }
-    
     
     // Aplica o movimento final no eixo Y
     y += velv;
     
     
-    if(cam_y > y) cam_y = y;
+    if(cam_y > y) cam_y = lerp(cam_y,y,0.1);
     
     camera_set_view_pos(view_camera[0], 0, cam_y - 160);
 

@@ -12,7 +12,10 @@
     "name":"Plataformas",
     "path":"folders/Objetos/Plataformas.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_plat_pai",
+    "path":"objects/obj_plat_pai/obj_plat_pai.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

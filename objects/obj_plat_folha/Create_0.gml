@@ -1,3 +1,4 @@
+cair = false;
 
 var _chance = irandom(100);
 if(_chance > 50){
