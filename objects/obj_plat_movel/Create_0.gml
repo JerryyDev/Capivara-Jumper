@@ -1,7 +1,6 @@
-var _chance = irandom(100);
-if(_chance > 50){
-    instance_create_layer(x,y-20,"Acai",obj_acai);
-}
+room_x = room_width;
+my_x_limite = x;
+hspeed = irandom_range(1,-1);
 
 #region Métodos
 

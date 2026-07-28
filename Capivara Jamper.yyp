@@ -40,6 +40,7 @@
     {"id":{"name":"obj_plat_tronco","path":"objects/obj_plat_tronco/obj_plat_tronco.yy",},},
     {"id":{"name":"rm_jogo","path":"rooms/rm_jogo/rm_jogo.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"id":{"name":"globais","path":"scripts/globais/globais.yy",},},
     {"id":{"name":"spr_acai","path":"sprites/spr_acai/spr_acai.yy",},},
     {"id":{"name":"spr_background_game","path":"sprites/spr_background_game/spr_background_game.yy",},},
     {"id":{"name":"spr_background_menu1","path":"sprites/spr_background_menu1/spr_background_menu1.yy",},},
