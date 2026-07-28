@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_acai",
+  "%Name":"obj_placa_record",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_capivara","path":"objects/obj_capivara/obj_capivara.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_acai",
+  "name":"obj_placa_record",
   "overriddenProperties":[],
   "parent":{
-    "name":"Itens",
-    "path":"folders/Objetos/Itens.yy",
+    "name":"Menu",
+    "path":"folders/Objetos/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_acai",
-    "path":"sprites/spr_acai/spr_acai.yy",
+    "name":"spr_placa_record",
+    "path":"sprites/spr_placa_record/spr_placa_record.yy",
   },
   "spriteMaskId":null,
   "visible":true,
