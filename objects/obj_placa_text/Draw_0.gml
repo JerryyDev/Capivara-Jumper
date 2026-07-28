@@ -3,7 +3,8 @@ draw_self();
 if(pontos < global.highscore){
     pontos += global.highscore / (game_get_speed(gamespeed_fps) * 2);
     
-    
+    var _pitch = irandom_range(1.2,1);
+    audio_play_sound(snd_bip,0,false,,,_pitch);
 }
 
 draw_set_halign(1);

@@ -1,3 +1,5 @@
+
+
 #region Variáveis
 
 // Velocidade vertical atual (sobe se for negativa, cai se for positiva)
@@ -73,6 +75,9 @@ Movimento_Horizontal = function(){
             
             // Pula instantaneamente
             velv = velvMAX;
+            
+            var _pitch = irandom_range(1.1,1.2);
+            audio_play_sound(snd_jump,0,false,,,_pitch);
             
         } else {
             // Se não encostou no topo, aplica gravidade apenas UMA vez

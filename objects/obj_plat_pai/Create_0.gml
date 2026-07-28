@@ -3,7 +3,7 @@
 Destruir = function(){
     
     var _cam_height = camera_get_view_height(view_camera[0]);
-    var _marg = 60;
+    var _marg = 73;
     
     if(camera_get_view_y(view_camera[0]) + _cam_height < y){
         var _x = random_range(sprite_width/2, room_width - sprite_width/2);

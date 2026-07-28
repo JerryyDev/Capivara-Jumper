@@ -4,17 +4,11 @@ if(Mouse_in){
     image_xscale = lerp(image_xscale,1.2,0.2);
     image_yscale = lerp(image_yscale,1.2,0.2);
     
-    xs_t = lerp(xs_t,1.2,0.2);
-    ys_t = lerp(ys_t,1.2,0.2);
-    
     if(mouse_check_button_pressed(mb_left)){
-        room_goto(rm_jogo);
+        room_goto(rm_menu);
     }
     
 }else{
     image_xscale = lerp(image_xscale,1,0.2);
     image_yscale = lerp(image_yscale,1,0.2);
-    
-    xs_t = lerp(xs_t,1,0.2);
-    ys_t = lerp(ys_t,1,0.2);
 }
