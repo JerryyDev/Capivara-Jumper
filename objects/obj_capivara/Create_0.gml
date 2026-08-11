@@ -38,70 +38,103 @@ Movimento_Horizontal = function(){
     
     // CAPTURA DOS INPUTS (TECLAS)
     var _r, _l;
-    _r = keyboard_check(vk_right); // Retorna true (1) se a seta Direita estiver pressionada
-    _l = keyboard_check(vk_left);  // Retorna true (1) se a seta Esquerda estiver pressionada
+    _r = keyboard_check(vk_right) or keyboard_check(ord("D"));
+    _l = keyboard_check(vk_left) or keyboard_check(ord("A"));
     
     Right = _r;
     Left = _l;
     
+    var _dir = Right - Left;
     
     // MOVIMENTAÇÃO HORIZONTAL
-    // Subtrai Esquerda de Direita (ex: Direita(1) - Esquerda(0) = 1 * velhMAX -> move para a direita)
-    velh = (Right - Left) * velhMAX;
+    velh = _dir * velhMAX;
     
     // Aplica o movimento no eixo X
     x += velh;
     
+    // --- TWEEN: TROCA DE DIREÇÃO & INCLINAÇÃO (JUICE) ---
+    if (_dir != 0) {
+        // Vira o lado do sprite (mantendo a proporção)
+        image_xscale = _dir * abs(image_xscale);
+        
+        // Inclina levemente o corpo na direção da corrida
+        var _target_angle = -_dir * 6;
+        tween(id, "image_angle", _target_angle, tween_animation.back_out, 6);
+    } else {
+        // Volta o ângulo para 0 quando solta os botões
+        if (image_angle != 0) {
+            tween(id, "image_angle", 0, tween_animation.quad_out, 6);
+        }
+    }
+    
+    // VERIFICAÇÃO DE COLISÃO E PULO
     if (velv > 0) {
         
-        // Pega a instância exata da plataforma abaixo (detecta qualquer filho de obj_plat_pai)
         var _plat = instance_place(x, y + velv, obj_plat_pai);
         
-        // Se colidiu E os pés da capivara estão ACIMA do topo da plataforma
         if (_plat != noone && bbox_bottom <= _plat.bbox_top + velv) {
             
-            // Encosta a capivara perfeitamente no topo da plataforma
             while (!place_meeting(x, y + sign(velv), obj_plat_pai)) {
                 y += sign(velv);
             }
             
-            // Cria a partícula de pulo
             instance_create_layer(x, y, layer, obj_part);
             
-            // COMPORTAMENTO ESPECÍFICO: Se a plataforma for a folha, faz SÓ ELA cair
+            // --- CHAMA O IMPACTO DIRETO NA PLATAFORMA ---
+            _plat.mola_impacto();
+            
             if (_plat.object_index == obj_plat_folha) {
-                _plat.cair = true; // Ativa o cair apenas na instância '_plat' tocada
+                _plat.cair = true;
             }
             
             // Pula instantaneamente
             velv = velvMAX;
             
-            var _pitch = irandom_range(1.1,1.2);
-            audio_play_sound(snd_jump,0,false,,,_pitch);
+            var _pitch = irandom_range(1.1, 1.2);
+            audio_play_sound(snd_jump, 0, false, , , _pitch);
+            
+            // --- TWEEN: SQUASH & STRETCH DO PULO (JUICE) ---
+            // 1. Achata na aterrissagem (Squash rápido)
+            var _dir_x = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+            
+            tween(id, "image_yscale", 0.70, tween_animation.quad_in, 3, function() {
+                // 2. Estica no impulso do pulo
+                tween(id, "image_yscale", 1.25, tween_animation.back_out, 8, function() {
+                    // 3. Volta ao tamanho normal no ar
+                    tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
+                });
+            });
+            
+            // Reação no eixo X sincronizada usando sign(image_xscale) direto
+            tween(id, "image_xscale", _dir_x * 1.20, tween_animation.quad_in, 3, function() {
+                var _sx = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+                tween(id, "image_xscale", _sx * 0.80, tween_animation.back_out, 8, function() {
+                    var _sx2 = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+                    tween(id, "image_xscale", _sx2 * 1.0, tween_animation.quad_out, 6);
+                });
+            });
             
         } else {
-            // Se não encostou no topo, aplica gravidade apenas UMA vez
             velv += grav;
         }
     } else {
-        // Se estiver subindo, aplica gravidade apenas UMA vez
         velv += grav;
     }
     
     // Aplica o movimento final no eixo Y
     y += velv;
     
-    
+    // CAMERA
     if(cam_y > y){ 
         cam_y = y;
     }
     
     camera_set_view_pos(view_camera[0], 0, cam_y - 160);
 
-    
+    // QUEDA / DERROTA
     if (y > camera_get_view_y(view_camera[0]) + 320) {
         global.proxima_room = rm_score;
-        layer_sequence_create("TRN", room_width, room_height, trn_in);
+        layer_sequence_create("TRN", 0, cam_y, trn_in);
     }
 }
 

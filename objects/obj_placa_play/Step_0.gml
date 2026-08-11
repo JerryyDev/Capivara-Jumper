@@ -1,21 +1,45 @@
-var Mouse_in = instance_position(mouse_x,mouse_y,id);
+var _mouse_over = position_meeting(mouse_x, mouse_y, id);
 
-if(Mouse_in){
-    image_xscale = lerp(image_xscale,1.2,0.2);
-    image_yscale = lerp(image_yscale,1.2,0.2);
-    
-    xs_t = lerp(xs_t,1.2,0.2);
-    ys_t = lerp(ys_t,1.2,0.2);
-    
-    if(mouse_check_button_pressed(mb_left)){
-        global.proxima_room = rm_jogo;
-        layer_sequence_create("TRN", 0, 0, trn_in);
+
+if (_mouse_over && !is_hover) {
+    is_hover = true;
+    if (!is_pressed) {
+        tween(id, "image_xscale", 1.12, tween_animation.back_out, 8);
+        tween(id, "image_yscale", 1.12, tween_animation.back_out, 8);
+        tween(id, "image_angle", 3, tween_animation.back_out, 10);
     }
+} 
+
+else if (!_mouse_over && is_hover) {
+    is_hover = false;
+    is_pressed = false;
     
-}else{
-    image_xscale = lerp(image_xscale,1,0.2);
-    image_yscale = lerp(image_yscale,1,0.2);
+    tween(id, "image_xscale", 1.0, tween_animation.quad_out, 6);
+    tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
+    tween(id, "image_angle", 0, tween_animation.quad_out, 6);
+}
+
+if (_mouse_over && mouse_check_button_pressed(mb_left)) {
+    is_pressed = true;
     
-    xs_t = lerp(xs_t,1,0.2);
-    ys_t = lerp(ys_t,1,0.2);
+    tween(id, "image_xscale", 1.20, tween_animation.back_in, 4);
+    tween(id, "image_yscale", 0.75, tween_animation.back_in, 4);
+    tween(id, "image_angle", -2, tween_animation.back_in, 4);
+}
+
+if (is_pressed && mouse_check_button_released(mb_left)) {
+    is_pressed = false;
+    
+    if (_mouse_over) {
+        tween(id, "image_xscale", 1.12, tween_animation.elastic_out, 12, function() {
+            global.proxima_room = rm_jogo;
+            layer_sequence_create("TRN", 0, 0, trn_in);
+        });
+        tween(id, "image_yscale", 1.12, tween_animation.elastic_out, 12);
+        tween(id, "image_angle", 3, tween_animation.elastic_out, 12);
+    } else {
+        tween(id, "image_xscale", 1.0, tween_animation.quad_out, 6);
+        tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
+        tween(id, "image_angle", 0, tween_animation.quad_out, 6);
+    }
 }

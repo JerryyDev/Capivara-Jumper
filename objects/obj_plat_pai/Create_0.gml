@@ -1,5 +1,14 @@
 #region Métodos
 
+mola_impacto = function() {
+    tween(id, "image_yscale", 0.70, tween_animation.quad_in, 8, function() {
+        tween(id, "image_yscale", 1.0, tween_animation.elastic_out, 24);
+    });
+    tween(id, "image_xscale", 1.20, tween_animation.quad_in, 8, function() {
+        tween(id, "image_xscale", 1.0, tween_animation.elastic_out, 24);
+    });
+}
+
 Destruir = function(){
     
     var _cam_height = camera_get_view_height(view_camera[0]);

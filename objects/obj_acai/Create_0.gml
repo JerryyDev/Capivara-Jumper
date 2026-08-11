@@ -7,3 +7,5 @@ if(_chance > 50 && _chance < 80){
 }else if(_chance > 90){
     image_index = 2;
 }
+
+coletado = false;
