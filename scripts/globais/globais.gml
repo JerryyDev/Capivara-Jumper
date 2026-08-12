@@ -1,6 +1,8 @@
 global.highscore = 0;
 global.score_atual = 0;
 
+global.acai = 0;
+
 randomize();
 
 global.in_trn = false;
