@@ -1,7 +1,9 @@
 global.highscore = 0;
 global.score_atual = 0;
 
-global.acai = 0;
+global.acai = 105;
+
+global.sprite_equipada = spr_capivara;
 
 randomize();
 

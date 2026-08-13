@@ -30,6 +30,8 @@ global.pontuacao = 0;
 #endregion
 
 
+sprite_index = global.sprite_equipada;
+
 
 #region Métodos
 
