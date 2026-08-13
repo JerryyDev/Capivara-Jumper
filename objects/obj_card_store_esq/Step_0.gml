@@ -2,7 +2,7 @@ var _mouse_over = position_meeting(mouse_x, mouse_y, id);
 var _esta_equipada = (global.sprite_equipada == sprite_skin); 
 
 if (_esta_equipada) {
-    sprite_index = spr_card_store_esq_check; 
+    sprite_index = spr_card_store_esq_check;
     image_alpha = 1.0;
 } else {
     sprite_index = spr_card_store_esq; 
@@ -33,6 +33,13 @@ if (_mouse_over) {
             global.acai -= custo;
             comprei = true;
             global.sprite_equipada = sprite_skin;
+            
+            
+            if (sprite_skin == spr_capivara) {
+                global.skin_capivara_comprada = true;
+            } else if (sprite_skin == spr_taman) {
+                global.skin_tamandua_comprada = true;
+            }
         } 
         else if (comprei) {
             global.sprite_equipada = sprite_skin;

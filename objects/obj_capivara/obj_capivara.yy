@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Capivara",
-    "path":"folders/Objetos/Capivara.yy",
+    "path":"folders/Objetos/Players/Capivara.yy",
   },
   "parentObjectId":null,
   "persistent":false,

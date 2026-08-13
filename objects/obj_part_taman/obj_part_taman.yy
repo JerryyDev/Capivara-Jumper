@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_part",
+  "%Name":"obj_part_taman",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_part",
+  "name":"obj_part_taman",
   "overriddenProperties":[],
   "parent":{
-    "name":"Capivara",
-    "path":"folders/Objetos/Players/Capivara.yy",
+    "name":"Taman",
+    "path":"folders/Objetos/Players/Taman.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_vfx_capivara",
-    "path":"sprites/spr_vfx_capivara/spr_vfx_capivara.yy",
+    "name":"spr_vfx_taman",
+    "path":"sprites/spr_vfx_taman/spr_vfx_taman.yy",
   },
   "spriteMaskId":null,
   "visible":true,

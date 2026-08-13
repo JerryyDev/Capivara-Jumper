@@ -6,7 +6,7 @@ if (_mouse_over && !is_hover) {
     if (!is_pressed) {
         tween(id, "image_xscale", 1.15, tween_animation.back_out, 8);
         tween(id, "image_yscale", 1.15, tween_animation.back_out, 8);
-        tween(id, "image_angle", 3, tween_animation.back_out, 8);
+        tween(id, "image_angle", -3, tween_animation.back_out, 8);
     }
 } 
 

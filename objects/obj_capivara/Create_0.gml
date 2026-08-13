@@ -80,7 +80,8 @@ Movimento_Horizontal = function(){
                 y += sign(velv);
             }
             
-            instance_create_layer(x, y, layer, obj_part);
+            disparar_juice_part();
+            
             
             // --- CHAMA O IMPACTO DIRETO NA PLATAFORMA ---
             _plat.mola_impacto();
@@ -95,26 +96,9 @@ Movimento_Horizontal = function(){
             var _pitch = irandom_range(1.1, 1.2);
             audio_play_sound(snd_jump, 0, false, , , _pitch);
             
-            // --- TWEEN: SQUASH & STRETCH DO PULO (JUICE) ---
-            // 1. Achata na aterrissagem (Squash rápido)
             var _dir_x = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
             
-            tween(id, "image_yscale", 0.70, tween_animation.quad_in, 3, function() {
-                // 2. Estica no impulso do pulo
-                tween(id, "image_yscale", 1.25, tween_animation.back_out, 8, function() {
-                    // 3. Volta ao tamanho normal no ar
-                    tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
-                });
-            });
-            
-            // Reação no eixo X sincronizada usando sign(image_xscale) direto
-            tween(id, "image_xscale", _dir_x * 1.20, tween_animation.quad_in, 3, function() {
-                var _sx = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
-                tween(id, "image_xscale", _sx * 0.80, tween_animation.back_out, 8, function() {
-                    var _sx2 = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
-                    tween(id, "image_xscale", _sx2 * 1.0, tween_animation.quad_out, 6);
-                });
-            });
+            disparar_juice_pulo();
             
         } else {
             velv += grav;
@@ -137,6 +121,69 @@ Movimento_Horizontal = function(){
     if (y > camera_get_view_y(view_camera[0]) + 320) {
         global.proxima_room = rm_score;
         layer_sequence_create("TRN", 0, cam_y, trn_in);
+    }
+}
+
+disparar_juice_part = function(){
+    if(global.sprite_equipada == spr_capivara){
+        instance_create_layer(x, y, layer, obj_part);
+    }else if(global.sprite_equipada == spr_poto){
+        instance_create_layer(x, y, layer, obj_part_poto);
+    }else if(global.sprite_equipada == spr_taman){
+        instance_create_layer(x, y, layer, obj_part_taman);
+    }
+}
+
+disparar_juice_pulo = function() {
+    var _dir_x = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+    
+    if (global.sprite_equipada == spr_capivara) {
+        tween(id, "image_yscale", 0.60, tween_animation.quad_in, 3, function() {
+            tween(id, "image_yscale", 1.20, tween_animation.back_out, 10, function() {
+                tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
+            });
+        });
+        
+        tween(id, "image_xscale", _dir_x * 1.35, tween_animation.quad_in, 3, function() {
+            var _sx = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+            tween(id, "image_xscale", _sx * 0.80, tween_animation.back_out, 10, function() {
+                var _sx2 = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+                tween(id, "image_xscale", _sx2 * 1.0, tween_animation.quad_out, 6);
+            });
+        });
+    }else if (global.sprite_equipada == spr_poto) {
+        tween(id, "image_yscale", 0.75, tween_animation.sine_in, 4, function() {
+            tween(id, "image_yscale", 1.30, tween_animation.sine_out, 12, function() {
+                tween(id, "image_yscale", 1.0, tween_animation.sine_inout, 6);
+            });
+        });
+        
+        tween(id, "image_xscale", _dir_x * 1.15, tween_animation.sine_in, 4, function() {
+            var _sx = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+            tween(id, "image_xscale", _sx * 0.85, tween_animation.sine_out, 12, function() {
+                var _sx2 = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+                tween(id, "image_xscale", _sx2 * 1.0, tween_animation.sine_inout, 6);
+            });
+        });
+    }else if (global.sprite_equipada == spr_taman) {
+        tween(id, "image_yscale", 0.80, tween_animation.quad_in, 2, function() {
+            tween(id, "image_yscale", 1.45, tween_animation.elastic_out, 14, function() {
+                tween(id, "image_yscale", 1.0, tween_animation.quad_out, 6);
+            });
+        });
+        
+        tween(id, "image_xscale", _dir_x * 1.10, tween_animation.quad_in, 2, function() {
+            var _sx = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+            tween(id, "image_xscale", _sx * 0.65, tween_animation.elastic_out, 14, function() {
+                var _sx2 = sign(image_xscale) == 0 ? 1 : sign(image_xscale);
+                tween(id, "image_xscale", _sx2 * 1.0, tween_animation.quad_out, 6);
+            });
+        });
+        
+        var _ang = _dir_x * 12;
+        tween(id, "image_angle", _ang, tween_animation.back_out, 5, function() {
+            tween(id, "image_angle", 0, tween_animation.quad_out, 8);
+        });
     }
 }
 

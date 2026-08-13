@@ -33,6 +33,10 @@ if (_mouse_over) {
             global.acai -= custo;
             comprei = true;
             global.sprite_equipada = sprite_skin;
+            
+            if(sprite_skin == spr_poto){
+                global.skin_poto_comprada = true;
+            }
         } 
         else if (comprei) {
             global.sprite_equipada = sprite_skin;
